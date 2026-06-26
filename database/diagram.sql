@@ -54,7 +54,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`Recoleccion` (
   `idRecoleccion` INT NOT NULL AUTO_INCREMENT,
   `cantidad_recolectada` DECIMAL(10,2) NOT NULL,
-  `fecha` VARCHAR(45) NOT NULL,
+  `fecha` DATE NOT NULL,
   `Persona_idPersona` INT NOT NULL,
   PRIMARY KEY (`idRecoleccion`),
   INDEX `fk_Recoleccion_Persona1_idx` (`Persona_idPersona` ASC) VISIBLE,

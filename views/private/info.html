@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/private/styles/style2.css">
+    <script type="module" src="/private/frontend.js" ></script>
+    <title>Info</title>
+</head>
+<body>
+    
+    <div class="content">
+    <div id="navBar">
+        <nav>
+            <div id="logo" >
+                <img src="img /icon.png" alt="" id="icon">
+                <div id="Tl">CAFE APP</div>
+            </div>
+            <ul>
+                <li >
+                    
+                     <a href="board.html" >
+                        <div class="navLink">Inicio</div>
+                     </a>
+
+                </li>
+                <li>
+                    <a href="reg.html">
+                        <div class="navLink" >Registrar trabajador</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="cafe.html">
+                        <div class="navLink">Registrar cantidad recolectada</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="pay.html">
+                        <div class="navLink">Generar planilla de pago</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="info.html">
+                        <div class="navLink">Generar informe</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="copy.html">
+                        <div class="navLink">Generar copia de seguridad</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        <div class="navLink" id="lout">Logout</div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div>
+        <div>Seleccione el rango </div>
+        <div class="range">
+            <div>
+                <div>Desde</div>
+                <input type="date" name="from2" id="from2">
+            </div>
+            <div>
+                <div>Hasta</div>
+                <input type="date" name="to2" id="to2">
+            </div>
+        </div>
+
+        <div class="format">
+            <div>Selecciona el formato:</div>
+            <input type="checkbox" name="pdf2" id="pdf2" value="yes">
+            <label for="pdf2">PDF</label>
+            <input type="checkbox" name="excel2" id="excel2">
+            <label for="excel2">EXCEL</label>
+            <input type="checkbox" name="word" id="word">
+            <label for="word">WORD</label>
+        </div>
+
+        <div id="options2">
+            <button>Previsualizar</button>
+            <button>Generar</button>
+        </div>
+    </div>
+
+    </div>
+</body>
+</html>

@@ -68,6 +68,62 @@ class Controler{
 
     }
 
+    async autenticarAdmin(req,res){
+
+        try{
+            //console.log(req.body);
+            const {user, pwd } = req.body; 
+
+            
+            const answer = await model.getAdmin(user); 
+
+            // se valida que el usuario existe, es decir si la respuesta de la base de datos no es un arr vacio
+            if ( answer.length >= 1 ){
+                
+                // validar usuario y contraseña coinciden 
+                if ( user.trim() === answer[0].usuario.trim() && pwd.trim() === answer[0].contraseña.trim() ){
+
+                    
+                    req.session.autenticado = {
+                        id : answer[0].idAdministrador,
+                        nombre : user
+                    };
+                   
+                    res.json({success: true, msg : "autenticado correctamente "});
+
+                }else{
+                    
+
+                    res.status(401).json({success: false , msg: "contraseña incorrecta "});
+
+                }
+            } else{
+
+
+                res.status(401).json({success: false, msg: "parece que el usuario no existe "});
+                
+            }
+            
+        }catch (error){
+            
+            res.status(401).json({success: false, msg: "error al intentar iniciar seccion "});
+        }
+    }
+
+    //logout function 
+    async logout(req,res){
+
+        try{
+
+            req.session.destroy(() => {
+            })
+
+            res.json({success: true, msg: "session cerrada con exito ", redirectUrl: '/'  })
+
+        } catch(error){
+            res.status(401).json({success: false, msg: "error al intentar cerrar la seccion "})
+        }
+    }
 
 }
 

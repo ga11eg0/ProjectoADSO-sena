@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#login{
+    width: 400px;
+    height: 200px;
+    font-size: 20px;
+    padding: 30px ;
+    border: 2px solid black ;
+    border-radius: 10px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#u, #p{
+    margin: 20px ;
+}
+
+#btn-log{
+    color: white;
+    background-color: blueviolet;
+    font-size: 16px;
+    margin-left: 40%;
+    margin-top: 20px;
+}

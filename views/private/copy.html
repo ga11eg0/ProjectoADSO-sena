@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/private/styles/style2.css">
+    <script type="module" src="/private/frontend.js" ></script>
+    <title>security copy</title>
+</head>
+<body>
+
+    <div class="content">
+    <div id="navBar">
+        <nav>
+            <div id="logo" >
+                <img src="img /icon.png" alt="" id="icon">
+                <div id="Tl">CAFE APP</div>
+            </div>
+            <ul>
+                <li >
+                    
+                     <a href="board.html" >
+                        <div class="navLink">Inicio</div>
+                     </a>
+
+                </li>
+                <li>
+                    <a href="reg.html">
+                        <div class="navLink" >Registrar trabajador</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="cafe.html">
+                        <div class="navLink">Registrar cantidad recolectada</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="pay.html">
+                        <div class="navLink">Generar planilla de pago</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="info.html">
+                        <div class="navLink">Generar informe</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="copy.html">
+                        <div class="navLink">Generar copia de seguridad</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/">
+                        <div class="navLink" id="lout">Logout</div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div>
+        <div>Seleccione el rango </div>
+        <div class="range">
+            <div>
+                <div>Desde</div>
+                <input type="date" name="from3" id="from3">
+            </div>
+            <div>
+                <div>Hasta</div>
+                <input type="date" name="to3" id="to3">
+            </div>
+        </div>
+
+        <div id="services">
+            <input type="checkbox" name="drive" id="drive">
+            <label for="drive">Google Drive </label>
+            <input type="checkbox" name="over" id="over">
+            <label for="over">Over drive</label>
+            <input type="checkbox" name="pc" id="pc">
+            <label for="pc">Este equipo </label>
+            <input type="checkbox" name="other" id="other">
+            <label for="other">Otros</label>
+            <button>Generar copia </button>
+        </div>
+
+    </div>
+
+    </div>
+</body>
+</html>

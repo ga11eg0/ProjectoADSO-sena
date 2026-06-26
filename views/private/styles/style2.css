@@ -1,0 +1,111 @@
+a {
+    text-decoration: none;
+    
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#navBar{
+    background-color: #242424;
+    padding: 20px;
+    width: 250px;
+    height: 100vh;
+}
+
+#icon {
+    width: 70px;
+    height: auto;
+}
+
+#logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+#Tl {
+    font-size: 42px;
+    color: white;
+    padding: 5px;
+}
+
+.navLink {
+    
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    background-color: #242424;
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 200px;
+    height: auto;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.content {
+    display: flex;
+}
+
+#menu {
+    display: flex;
+    font-size: 20px;
+    text-align: center;
+    
+}
+
+.el {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.op {
+    color: white;
+    background-color: #1c0333;
+    border: 2px solid #360f5a;
+    border-radius: 10px;
+    padding: 10px ;
+    width: 270px;
+    margin: 20px;
+    margin-top: 48px;
+}
+
+#reg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30%;
+}
+
+#cc, #n{
+    font-size: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 20px 0px ;
+}
+button {
+    color: white;
+    background-color: #1c0333;
+    padding: 5px;
+    border-radius: 10%;
+}
+
+.board {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#search, #setP {
+    width: 300px;
+    margin: 30px ;
+}
+
+.range, .fomrat, #precio, #options {
+    width: 300px;
+    margin: 30px;
+}
