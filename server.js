@@ -33,6 +33,18 @@ function verificarSesion(req, res, next) {
     next();
 };
 
+//verifica session para las apis
+function isAuthorized(req,res,next){
+
+    if(!req.session.autenticado){
+        return res.status(401).json({
+            success: false,
+            msg: "No autorizado"
+        });
+
+    }
+    next();
+}
 
 
 // Middleware para evitar que se guarde la página en caché
@@ -59,7 +71,7 @@ app.get('/board',noCache, (req, res) => {
 
 
 // Montamos las rutas del módulo de personas
-app.use('/', personRoutes);
+app.use('/personas',isAuthorized, personRoutes);
 // ruta de autenticacion 
 app.use('/',authRoutes); 
 

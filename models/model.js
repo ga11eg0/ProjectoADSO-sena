@@ -14,6 +14,18 @@ class Model{
 
     }
 
+    //search user by id
+    async search_user(cedula){
+
+        try{
+            const query  = 'SELECT * FROM Persona WHERE cedula =? ';
+            const [rows] = await db.query(query,[cedula]);
+            return rows;
+        } catch (error){
+            console.log(error);
+        }
+    }
+
     //insert new data 
     async insert_user(nombre,cedula){
 

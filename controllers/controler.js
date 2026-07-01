@@ -16,13 +16,27 @@ class Controler{
 
     }
 
+
     //instert new persona
     async insert_persona(req,res){
         
         try{
             const {nombre,cedula} = req.body;
-            const insertId = await model.insert_user(nombre,cedula);
-            res.status(201).json({mensaje: 'persona ingresada con exito'});
+
+            //1. CHECK IF USER EXISTS 
+            const lookup = await model.search_user(cedula);
+            //console.log(lookup);
+            //console.log(lookup.length);
+            if (lookup.length === 0){
+
+                const insertId = await model.insert_user(nombre,cedula);
+                res.status(201).json({success: 'true' ,msg: 'persona ingresada con exito'});
+            
+            }else if ( lookup.length === 1){
+                res.status(200).json({success: 'false', msg: 'parece que la persona ya esta registrada', persona: lookup[0].nombre, cedula: lookup[0].cedula}); 
+            }
+
+            
 
         }catch(error){
             res.status(500).json({error: 'error al insertar usuario '});
@@ -68,44 +82,26 @@ class Controler{
 
     }
 
+
     async autenticarAdmin(req,res){
 
         try{
             //console.log(req.body);
             const {user, pwd } = req.body; 
-
-            
             const answer = await model.getAdmin(user); 
-
             // se valida que el usuario existe, es decir si la respuesta de la base de datos no es un arr vacio
-            if ( answer.length >= 1 ){
-                
+            if ( answer.length >= 1 ){           
                 // validar usuario y contraseña coinciden 
                 if ( user.trim() === answer[0].usuario.trim() && pwd.trim() === answer[0].contraseña.trim() ){
-
-                    
-                    req.session.autenticado = {
-                        id : answer[0].idAdministrador,
-                        nombre : user
-                    };
-                   
+                    req.session.autenticado = {id : answer[0].idAdministrador,nombre : user};
                     res.json({success: true, msg : "autenticado correctamente "});
-
                 }else{
-                    
-
                     res.status(401).json({success: false , msg: "contraseña incorrecta "});
-
                 }
             } else{
-
-
-                res.status(401).json({success: false, msg: "parece que el usuario no existe "});
-                
-            }
-            
-        }catch (error){
-            
+                res.status(401).json({success: false, msg: "parece que el usuario no existe "});          
+            }   
+        }catch (error){   
             res.status(401).json({success: false, msg: "error al intentar iniciar seccion "});
         }
     }

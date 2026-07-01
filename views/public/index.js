@@ -2,7 +2,6 @@
 function showMessage(text) {
 
     const messageDiv = document.getElementById("message");
-
     messageDiv.textContent = text;
 
 }
@@ -12,15 +11,10 @@ async function login(event) {
     // para la accion de enviar que hace por defecto 
     event.preventDefault();
     console.log("envio del formulario log in");
-
     const form = event.target;
     console.log(form)
-
     const user = form.user.value;
     const pwd = form.pwd.value;
-
-    console.log(user);
-    console.log(pwd);
 
     const response = await fetch("/login", {
         method: "POST",
