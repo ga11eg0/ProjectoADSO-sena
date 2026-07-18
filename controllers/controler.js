@@ -22,24 +22,46 @@ class Controler{
         
         try{
             const {nombre,cedula} = req.body;
-
             //1. CHECK IF USER EXISTS 
             const lookup = await model.search_user(cedula);
             //console.log(lookup);
             //console.log(lookup.length);
             if (lookup.length === 0){
-
                 const insertId = await model.insert_user(nombre,cedula);
-                res.status(201).json({success: 'true' ,msg: 'persona ingresada con exito'});
+                res.status(201).json({success: 'true' ,
+                                      msg: 'persona ingresada con exito'});
             
             }else if ( lookup.length === 1){
-                res.status(200).json({success: 'false', msg: 'parece que la persona ya esta registrada', persona: lookup[0].nombre, cedula: lookup[0].cedula}); 
+                res.status(200).json({success: 'false', 
+                                      msg: 'parece que la persona ya esta registrada', 
+                                      persona: lookup[0].nombre, 
+                                      cedula: lookup[0].cedula}); 
             }
-
-            
-
         }catch(error){
             res.status(500).json({error: 'error al insertar usuario '});
+
+        }
+    }
+    // search by cedula
+    async search_cedula(req,res){
+
+        try{
+
+            const cedula = req.params.cedula;
+            const lookup = await model.search_user(cedula);
+            if (lookup.length === 1 ){
+                res.status(201).json({success: 'true', msg: 'persona existe', 
+                                    nombre: lookup[0].nombre, 
+                                    cedula: lookup[0].cedula,
+                                    id: lookup[0].idPersona
+                                })
+            } else{
+                res.status(200).json({success: 'false', 
+                    msg: 'persona no encontrada, porfavor verifique informacion e intente de nuevo'}); 
+            }
+
+        }catch(error){
+            res.status(500).json({error: 'error al intentar buscar usuario '});
 
         }
     }

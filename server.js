@@ -76,8 +76,8 @@ app.use('/personas',isAuthorized, personRoutes);
 app.use('/',authRoutes); 
 
 // Usamos el puerto definido en el .env, o el 3000 por defecto
-const PORT = process.env.PORT || 3000;
-
+//const PORT = process.env.PORT || 3000;
+const PORT = 3000; 
 app.get('/', (req, res) => {
     res.send('¡Servidor corriendo y conectado a la base de datos!');
 });
