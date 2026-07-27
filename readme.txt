@@ -7,4 +7,5 @@ utiliza la arqutectura modelo, vista, controlador
 utiliza javascript y el entorno node.js y express
 para la base de datos se usa mysql 
 
-
+---------------nuevo-----------------------------------------------
+se añadio un front-end en react 
