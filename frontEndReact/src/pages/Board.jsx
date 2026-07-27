@@ -1,41 +1,41 @@
-
+import { Link } from "react-router-dom";
 function Board(){
 
     return(
          <div id="menu">
 
-         <ul class="el">
+         <ul className="el">
                 <li >
                     
-                     <a href="/board" >
-                        <div class="op">Inicio</div>
-                     </a>
+                     <Link to="/board" >
+                        <div className="op">Inicio</div>
+                     </Link>
 
                 </li>
                 <li>
-                    <a href="/registro">
-                        <div class="op" >Registrar trabajador</div>
-                    </a>
+                    <Link to="/registro">
+                        <div className="op" >Registrar trabajador</div>
+                    </Link>
                 </li>
                 <li>
-                    <a href="/cafe">
-                        <div class="op">Registrar cantidad recolectada</div>
-                    </a>
+                    <Link to="/cafe">
+                        <div className="op">Registrar cantidad recolectada</div>
+                    </Link>
                 </li>
                 <li>
-                    <a href="/pay">
-                        <div class="op">Generar planilla de pago</div>
-                    </a>
+                    <Link to="/pay">
+                        <div className="op">Generar planilla de pago</div>
+                    </Link>
                 </li>
                 <li>
-                    <a href="/info">
-                        <div class="op">Generar informe</div>
-                    </a>
+                    <Link to="/info">
+                        <div className="op">Generar informe</div>
+                    </Link>
                 </li>
                 <li>
-                    <a href="/copy">
-                        <div class="op">Generar copia de seguridad</div>
-                    </a>
+                    <Link to="/copy">
+                        <div className="op">Generar copia de seguridad</div>
+                    </Link>
                 </li>
             </ul>
 

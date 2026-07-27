@@ -4,7 +4,7 @@ function showMessage(text) {
     const messageDiv = document.getElementById("message");
     messageDiv.textContent = text;
 
-}
+} 
 
 async function login(event) {
     
@@ -26,12 +26,7 @@ async function login(event) {
         pwd: pwd
         })
     });
-
     const data = await response.json();
-
-    console.log(response.status); // 401
-    console.log(data);            // Entire object
-    console.log(data.msg);        // Message
     if (data.success) {
         window.location.href = "/board";
     }else{

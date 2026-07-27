@@ -1,11 +1,14 @@
 const express = require('express');
 require('dotenv').config();
+const cors = require('cors'); // <-- 1. Importa CORS
 const path = require('path');
 const session = require('express-session');
 const personRoutes = require('./routes/persona_rutas');
 const authRoutes = require('./routes/auth');
 
 const app = express();
+// This allows all cross-origin requests
+app.use(cors()); 
 
 // Middleware para que Express entienda el cuerpo en formato JSON (req.body)
 app.use(express.json());

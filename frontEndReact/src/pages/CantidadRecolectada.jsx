@@ -1,7 +1,7 @@
 function CantidadRecolectada(){
 
     return(
-        <div class="board">
+        <div className="board">
         <div id="search">
             <input type="search" name="find" id="find"/>
             <button id="search_btn" >Buscar</button>

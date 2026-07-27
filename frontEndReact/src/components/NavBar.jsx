@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 function NavBar(){
 
@@ -11,40 +12,40 @@ function NavBar(){
             <ul>
                 <li >
                     
-                     <a href="/board" >
-                        <div class="navLink">Inicio</div>
-                     </a>
+                     <Link to="/board" >
+                        <div className="navLink">Inicio</div>
+                     </Link>
 
                 </li>
                 <li>
-                    <a href="/registro">
-                        <div class="navLink" >Registrar trabajador</div>
-                    </a>
+                    <Link to="/registro">
+                        <div className="navLink" >Registrar trabajador</div>
+                    </Link>
                 </li>
                 <li>
-                    <a href="/cafe">
-                        <div class="navLink">Registrar cantidad recolectada</div>
-                    </a>
+                    <Link to="/cafe">
+                        <div className="navLink">Registrar cantidad recolectada</div>
+                    </Link>
                 </li>
                 <li>
-                    <a href="/pay">
-                        <div class="navLink">Generar planilla de pago</div>
-                    </a>
+                    <Link to="/pay">
+                        <div className="navLink">Generar planilla de pago</div>
+                    </Link>
                 </li>
                 <li>
-                    <a href="/info">
-                        <div class="navLink">Generar informe</div>
-                    </a>
+                    <Link to="/info">
+                        <div className="navLink">Generar informe</div>
+                    </Link>
                 </li>
                 <li>
-                    <a href="/copy">
-                        <div class="navLink">Generar copia de seguridad</div>
-                    </a>
+                    <Link to="/copy">
+                        <div className="navLink">Generar copia de seguridad</div>
+                    </Link>
                 </li>
                 <li>
-                    <a href="/">
-                        <div class="navLink" id="lout" >Logout</div>
-                    </a>
+                    <Link to="/">
+                        <div className="navLink" id="lout" >Logout</div>
+                    </Link>
                 </li>
             </ul>
         </nav>

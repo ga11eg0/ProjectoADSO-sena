@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/ga11eg0/ProjectoADSO-sena#readme",
   "dependencies": {
+    "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express-session": "^1.19.0",
     "mysql2": "^3.22.5"

@@ -1,9 +1,9 @@
 function Payment(){
 
     return(
-        <div class="board">
+        <div className="board">
         
-        <div class="range">
+        <div className="range">
             <div>Seleccione el rango </div>
             <div>
                 <div>Desde</div>
@@ -15,16 +15,16 @@ function Payment(){
             </div>
         </div>
 
-        <div class="format">
+        <div className="format">
             <div>Selecciona el formato:</div>
             <input type="checkbox" name="pdf" id="pdf" value="yes" />
-            <label for="pdf">PDF</label>
+            <label htmlFor="pdf">PDF</label>
             <input type="checkbox" name="excel" id="excel" />
-            <label for="excel">EXCEL</label>
+            <label htmlFor="excel">EXCEL</label>
         </div>
 
         <div id="precio">
-            <label for="precio">Precio del cafè: </label>
+            <label htmlFor="precio">Precio del cafè: </label>
             <input type="number" name="precio" id="precio" />
             <button>Guardar</button>
             

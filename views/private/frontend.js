@@ -87,7 +87,7 @@ async function search_worker(params) {
       showMsg("result",msg);
     } else {
       showMsg("result", data.msg); 
-    }
+    } 
   }
 }
 

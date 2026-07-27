@@ -5,11 +5,11 @@ function Registro(){
     <div id="reg">
    
             <div id="cc">
-                <label for="cedula">Cedula</label>
+                <label htmlFor="cedula">Cedula</label>
                 <input type="number" name="cedula" id="cedula" />
             </div>
             <div id="n">
-                <label for="name"> Nombre</label>
+                <label htmlFor="name"> Nombre</label>
                 <input type="text" name="name" id="name" />
 
             </div>
