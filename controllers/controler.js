@@ -9,7 +9,8 @@ class Controler{
 
         try{
             const personas = await model.get_users();
-            res.json(personas)
+            //console.log("working"); 
+            res.status(201).json({success: 'true', lista: personas}); 
         }catch(error){
             res.status(500).json({ error: 'error al obtener las personas '})
         }
@@ -51,9 +52,10 @@ class Controler{
             const lookup = await model.search_user(cedula);
             if (lookup.length === 1 ){
                 res.status(201).json({success: 'true', msg: 'persona existe', 
-                                    nombre: lookup[0].nombre, 
-                                    cedula: lookup[0].cedula,
-                                    id: lookup[0].idPersona
+                                    result:[ {   nombre: lookup[0].nombre, 
+                                                cedula: lookup[0].cedula,
+                                                idPersona: lookup[0].idPersona
+                                            }]
                                 })
             } else{
                 res.status(200).json({success: 'false', 
@@ -104,7 +106,57 @@ class Controler{
 
     }
 
+    //insertar nueva recoleccion 
+    async newRec(req,res){
+        try{
+            const {id} = req.params; 
+            const {cantidad} = req.body; 
 
+            const currentDate = new Date(); 
+            const formatedDate= currentDate.toISOString().split('T')[0]
+
+            const insertRec = await model.insertRec(cantidad, id, formatedDate );
+            //console.log("database response: ", insertRec); 
+            //console.log("formated date: ", formatedDate); 
+            if (insertRec.affectedRows > 0){
+                //console.log(insertRec); 
+                res.status(201).json({success: true, msg: "se inserto recoleccion con exito"}); 
+            } else{
+                res.status(500).json({success: false, msg: "error al enviar el formulario "})
+            }
+            
+
+            
+
+        }catch(error){
+            res.status(500).json({success:false, msg: "error al intentar ingresar recolleccion "})
+        }
+    }
+
+    // Generate Planilla de pago 
+    async genPayment(req,res){
+
+        try{
+
+            const {date1,date2, priceCoffe} = req.body; 
+
+            //1- search the database
+            const result = await model.GetCollectedByDateRange(date1,date2); 
+            //console.log("result ", result)
+            //2- convert the results to an object 
+            const toObjet = await model.OrderData(result, priceCoffe); 
+            //console.log("object ", toObjet); 
+            //3- convert the oject into html table
+            const htmlTable = await model.ObjectToHtml(toObjet); 
+
+            res.status(201).json({success: true, table: htmlTable}); 
+
+        }catch(error){
+            res.status(500).json({success: false,  msg: "error al intentar generar la planilla de pago"}); 
+        }
+    }
+
+    // Adimin autenthcation --------------------------------------------------------------------------------
     async autenticarAdmin(req,res){
 
         try{
@@ -128,9 +180,12 @@ class Controler{
         }
     }
 
-    //logout function 
-    async logout(req,res){
 
+
+
+    //logout function ---------------------------------------------------------------------------------
+    async logout(req,res){
+ 
         try{
 
             req.session.destroy(() => {

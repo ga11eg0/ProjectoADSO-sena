@@ -3,12 +3,19 @@ require('dotenv').config();
 const cors = require('cors'); // <-- 1. Importa CORS
 const path = require('path');
 const session = require('express-session');
+
+//imporatmos las rutas 
 const personRoutes = require('./routes/persona_rutas');
 const authRoutes = require('./routes/auth');
+const recoleccionRoutes= require('./routes/recoleccion'); 
+const paymentRoutes= require('./routes/payment'); 
 
 const app = express();
 // This allows all cross-origin requests
-app.use(cors()); 
+app.use(cors({
+    origin: `http://localhost:${process.env.PORT }`,
+    credentials: true 
+})); 
 
 // Middleware para que Express entienda el cuerpo en formato JSON (req.body)
 app.use(express.json());
@@ -77,10 +84,13 @@ app.get('/board',noCache, (req, res) => {
 app.use('/personas',isAuthorized, personRoutes);
 // ruta de autenticacion 
 app.use('/',authRoutes); 
+//Montamos ruta de recoleccion 
+app.use('/cafe',isAuthorized,recoleccionRoutes); 
+//rutas para planillas de pago 
+app.use('/pay',isAuthorized, paymentRoutes); 
 
 // Usamos el puerto definido en el .env, o el 3000 por defecto
-//const PORT = process.env.PORT || 3000;
-const PORT = 3000; 
+const PORT = process.env.PORT 
 app.get('/', (req, res) => {
     res.send('¡Servidor corriendo y conectado a la base de datos!');
 });
