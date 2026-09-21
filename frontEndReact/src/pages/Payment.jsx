@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 
 function Payment(){
@@ -69,70 +68,74 @@ function Payment(){
     return(
         <div className="board">
 
-            <div className="range">
-                <div>Seleccione el rango</div>
+            <div className="paymentControls">
 
-                <div>
-                    <div>Desde</div>
-                    <input
-                        type="date"
-                        name="from"
-                        id="from"
-                        value={date1}
-                        onChange={(e) => setDate1(e.target.value)}
-                    />
+                <div className="range">
+                    <div>Seleccione el rango</div>
+
+                    <div>
+                        <div>Desde</div>
+                        <input
+                            type="date"
+                            name="from"
+                            id="from"
+                            value={date1}
+                            onChange={(e) => setDate1(e.target.value)}
+                        />
+                    </div>
+
+                    <div>
+                        <div>Hasta</div>
+                        <input
+                            type="date"
+                            name="to"
+                            id="to"
+                            value={date2}
+                            onChange={(e) => setDate2(e.target.value)}
+                        />
+                    </div>
                 </div>
 
-                <div>
-                    <div>Hasta</div>
+                <div className="format">
+                    <div>Selecciona el formato:</div>
+
                     <input
-                        type="date"
-                        name="to"
-                        id="to"
-                        value={date2}
-                        onChange={(e) => setDate2(e.target.value)}
+                        type="checkbox"
+                        name="pdf"
+                        id="pdf"
+                        checked={format === "pdf"}
+                        onChange={() => setFormat(format === "pdf" ? "" : "pdf")}
                     />
+                    <label htmlFor="pdf">PDF</label>
+
+                    <input
+                        type="checkbox"
+                        name="excel"
+                        id="excel"
+                        checked={format === "excel"}
+                        onChange={() => setFormat(format === "excel" ? "" : "excel")}
+                    />
+                    <label htmlFor="excel">EXCEL</label>
                 </div>
-            </div>
 
-            <div className="format">
-                <div>Selecciona el formato:</div>
+                <div id="precio">
+                    <label htmlFor="precio">Precio del cafè: </label>
+                    <input
+                        type="number"
+                        name="precio"
+                        id="precio"
+                        value={priceCoffe}
+                        onChange={(e) => setPriceCoffe(e.target.value)}
+                    />
+                    <button type="button">Guardar</button>
+                </div>
 
-                <input
-                    type="checkbox"
-                    name="pdf"
-                    id="pdf"
-                    checked={format === "pdf"}
-                    onChange={() => setFormat(format === "pdf" ? "" : "pdf")}
-                />
-                <label htmlFor="pdf">PDF</label>
+                <div id="options">
+                    <button type="button" onClick={generate}>
+                        Generar
+                    </button>
+                </div>
 
-                <input
-                    type="checkbox"
-                    name="excel"
-                    id="excel"
-                    checked={format === "excel"}
-                    onChange={() => setFormat(format === "excel" ? "" : "excel")}
-                />
-                <label htmlFor="excel">EXCEL</label>
-            </div>
-
-            <div id="precio">
-                <label htmlFor="precio">Precio del cafè: </label>
-                <input
-                    type="number"
-                    name="precio"
-                    id="precio"
-                    value={priceCoffe}
-                    onChange={(e) => setPriceCoffe(e.target.value)}
-                />
-                <button type="button">Guardar</button>
-            </div>
-
-            <div id="options">
-                <button type="button" onClick={generate}>
-                    Generar
-                </button>
             </div>
 
             {status && <div id="paymentStatus">{status}</div>}
@@ -147,4 +150,6 @@ function Payment(){
 }
 
 export default Payment;
+
+
 
