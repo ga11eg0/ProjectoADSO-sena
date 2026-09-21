@@ -13,7 +13,7 @@ const paymentRoutes= require('./routes/payment');
 const app = express();
 // This allows all cross-origin requests
 app.use(cors({
-    origin: `http://localhost:${process.env.PORT }`,
+    origin: true,
     credentials: true 
 })); 
 

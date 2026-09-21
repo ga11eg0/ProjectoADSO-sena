@@ -23,7 +23,7 @@ function LogIn(props){
       
         <button type="submit" id="btn-log"  onClick={() => props.onLogin(credenciales.user,credenciales.pwd)}>login</button>
     
-        <div id="message"></div>
+        <div id="message">{props.errorMsg}</div>
 
        </div>
     )

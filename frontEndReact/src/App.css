@@ -138,3 +138,17 @@ button {
     width: 300px;
     margin: 30px;
 }
+
+.reslt{
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid black;
+    border-radius: 6px;
+    margin: 10px;
+    padding: 5px;
+}
+
+#search_btn, #find, #cln_btn{
+    margin: 10px;
+    padding: 5px;
+}

@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "../components/NavBar";
-function MainLayout(){
+function MainLayout({ onLogout }){
 
     
     return(
         <>
             <div className="content"> 
-            <NavBar/>
+            <NavBar onLogout={onLogout} />
 
             <Outlet/>
             </div>

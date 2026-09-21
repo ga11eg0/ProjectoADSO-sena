@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
+import LogOut from "./LogOut";
 
-function NavBar(){
+function NavBar({ onLogout }){
 
     return(
           <div id="navBar">
@@ -43,9 +44,7 @@ function NavBar(){
                     </Link>
                 </li>
                 <li>
-                    <Link to="/">
-                        <div className="navLink" id="lout" >Logout</div>
-                    </Link>
+                    <LogOut onLogout={onLogout} />
                 </li>
             </ul>
         </nav>

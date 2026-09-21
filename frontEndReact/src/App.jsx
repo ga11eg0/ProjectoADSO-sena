@@ -18,6 +18,7 @@ function App() {
       const navigate = useNavigate();
       const [isAuthenticated, setIsAuthenticated] = useState(false)
       const [user, setUser] = useState(null)
+      const [loginError, setLoginError] = useState("")
 
       console.log("isAuthenticated:", isAuthenticated);
       async function LogUser(user,password){
@@ -36,11 +37,29 @@ function App() {
 
       if(resultado.success){
         console.log("inicia sesion ")
+        setLoginError("")
         setIsAuthenticated(true)
         navigate("/board")
         
+      }else{
+        console.log(resultado.msg)
+        setLoginError(resultado.msg)
       }
 
+      }
+
+      async function LogOutUser(){
+
+        const respuesta = await fetch("http://localhost:3000/logout", {
+          method: "POST"
+        })
+
+        const resultado = await respuesta.json()
+
+        if(resultado.success){
+          setIsAuthenticated(false)
+          navigate(resultado.redirectUrl || "/login")
+        }
       }
 
   return (
@@ -49,10 +68,10 @@ function App() {
       <Routes>
           <Route path="/" element={ <Navigate to="/login" replace />} />
           <Route element={<LoginLayout/>} >
-            <Route path="/login" element={<LogIn onLogin={LogUser} />} />
+            <Route path="/login" element={<LogIn onLogin={LogUser} errorMsg={loginError} />} />
           </Route>
 
-          <Route element={<ProtectedLayout isAuthenticated={isAuthenticated} />}>
+          <Route element={<ProtectedLayout isAuthenticated={isAuthenticated} onLogout={LogOutUser} />}>
               <Route path="/board" element={<Board/>} ></Route>
               <Route path="/registro" element={<Registro/>} ></Route>
               <Route path="/cafe" element={<CantidadRecolectada/>} ></Route>
