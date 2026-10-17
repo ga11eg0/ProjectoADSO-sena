@@ -9,3 +9,6 @@ para la base de datos se usa mysql
 
 ---------------nuevo-----------------------------------------------
 se añadio un front-end en react 
+
+------herramientas de pruebas---------------
+npm install --save-dev jest supertest
